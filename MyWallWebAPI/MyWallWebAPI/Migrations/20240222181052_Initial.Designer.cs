@@ -9,7 +9,7 @@ using MyWallWebAPI;
 
 namespace MyWallWebAPI.Migrations
 {
-    [DbContext(typeof(MySQLContext))]
+    [DbContext(typeof(SqlServerContext))]
     [Migration("20240222181052_Initial")]
     partial class Initial
     {

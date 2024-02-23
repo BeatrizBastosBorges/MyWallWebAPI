@@ -6,9 +6,9 @@ namespace MyWallWebAPI.Infrastructure.Data.Repositories
 {
     public class PostRepository
     {
-        private readonly MySQLContext _context;
+        private readonly SqlServerContext _context;
 
-        public PostRepository(MySQLContext context)
+        public PostRepository(SqlServerContext context)
         {
             _context = context;
         }

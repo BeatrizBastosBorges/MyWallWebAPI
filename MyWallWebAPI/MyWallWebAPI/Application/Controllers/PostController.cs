@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWallWebAPI.Domain.Models.Services;
 using MyWallWebAPI.Infrastructure.Data.Repositories;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace MyWallWebAPI
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PostController : ControllerBase
