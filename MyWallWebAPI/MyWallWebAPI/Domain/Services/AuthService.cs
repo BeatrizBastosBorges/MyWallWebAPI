@@ -146,8 +146,8 @@ namespace MyWallWebAPI.Domain.Services
         {
             var userId = _userManager.GetUserId(_httpContextAccessor.HttpContext.User); // Get user id:
 
-            // ApplicationUser user = await _userRepository.GetUser(userId);
-            ApplicationUser user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+            ApplicationUser user = await _userRepository.GetUser(userId);
+            // ApplicationUser user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
 
             return user;
         }

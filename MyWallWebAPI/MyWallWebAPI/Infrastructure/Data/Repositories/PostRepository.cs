@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyWallWebAPI.Infrastructure.Data.Repositories
@@ -15,14 +16,21 @@ namespace MyWallWebAPI.Infrastructure.Data.Repositories
 
         public async Task<List<Post>> ListPosts()
         {
-            List<Post> list = await _context.Post.ToListAsync();
+            List<Post> list = await _context.Post.OrderBy(P => P.Data).Include(p => p.ApplicationUser).ToListAsync();
 
             return list;
         }
 
-        public async Task<Post> GetPost(int postId)
+        public async Task<List<Post>> ListPostsByApplicationUserId(string ApplicationUserId )
         {
-            Post post = await _context.Post.FindAsync(postId);
+            List<Post> list = await _context.Post.Where(p => p.ApplicationUserId.Equals(ApplicationUserId)).OrderBy(P => P.Data).ToListAsync();
+
+            return list;
+        }
+
+        public async Task<Post> GetPostById(int postId)
+        {
+            Post post = await _context.Post.Include(p => p.ApplicationUser).FirstOrDefaultAsync(p => p.Id == postId);
 
             return post;
         }
@@ -43,10 +51,11 @@ namespace MyWallWebAPI.Infrastructure.Data.Repositories
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> DeletePost(int postId)
+        public async Task<bool> DeletePostAsync(int postId)
         {
             var item = await _context.Post.FindAsync(postId);
             _context.Post.Remove(item);
+
             await _context.SaveChangesAsync();
 
             return true;

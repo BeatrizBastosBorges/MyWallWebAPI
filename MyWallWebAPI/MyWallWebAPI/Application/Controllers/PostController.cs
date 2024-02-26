@@ -36,6 +36,20 @@ namespace MyWallWebAPI
             }          
         }
 
+        [HttpGet("list-meus-posts")]
+        public async Task<ActionResult> ListMeusPosts()
+        {
+            try
+            {
+                List<Post> list = await _postService.ListMeusPosts();
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("get-post")]
         public async Task<ActionResult> GetPost([FromQuery] int postId)
         {
@@ -50,12 +64,12 @@ namespace MyWallWebAPI
             }
         }
 
-        [HttpPost("create-post")]
-        public async Task<ActionResult> CreatePost([FromBody] Post post)
+        [HttpPost("novo-post")]
+        public async Task<ActionResult> NovoPost([FromBody] Post post)
         {
             try
             {
-                post = await _postService.CreatePost(post);
+                post = await _postService.NovoPost(post);
                 return Ok(post);
             }
             catch (Exception ex)
@@ -79,9 +93,16 @@ namespace MyWallWebAPI
         }
 
         [HttpPost("delete-post")]
-        public async Task<ActionResult> DeletePost([FromBody] int postId)
+        public async Task<ActionResult> DeletePostAsync([FromBody] int postId)
         {
-            return Ok(await _postService.DeletePost(postId));
+            try
+            {
+                return Ok(await _postService.DeletePostAsync(postId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }          
         }
     }
 }
