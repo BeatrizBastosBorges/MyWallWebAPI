@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyWallWebAPI.Domain.Models;
 using MyWallWebAPI.Domain.Models.Services;
 using MyWallWebAPI.Infrastructure.Data.Repositories;
 using System;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MyWallWebAPI.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

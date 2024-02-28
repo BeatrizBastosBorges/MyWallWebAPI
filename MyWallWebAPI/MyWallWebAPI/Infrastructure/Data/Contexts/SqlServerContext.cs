@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyWallWebAPI.Domain;
+using MyWallWebAPI.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

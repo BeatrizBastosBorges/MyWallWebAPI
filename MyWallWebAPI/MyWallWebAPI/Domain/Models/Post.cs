@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyWallWebAPI
+namespace MyWallWebAPI.Domain.Models
 {
     public class Post
     {
