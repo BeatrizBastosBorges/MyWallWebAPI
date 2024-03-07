@@ -1,11 +1,10 @@
-﻿using MyWallWebAPI.Domain.Services;
+﻿using MyWallWebAPI.Domain.Services.Implementations;
 using MyWallWebAPI.Infrastructure.Data.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyWallWebAPI.Domain.Models.Services
+namespace MyWallWebAPI.Domain.Models.Services.Implementations
 {
     public class PostService
     {
@@ -85,11 +84,12 @@ namespace MyWallWebAPI.Domain.Models.Services
             ApplicationUser currentUser = await _authService.GetCurrentUser();
 
             Post findPost = await _postRepository.GetPostById(postId);
+
             if (findPost == null)
             {
                 throw new ArgumentException("Post não existe!");
             }
-            if (!findPost.ApplicationUser.Equals(currentUser.Id))
+            if (findPost.ApplicationUser.Equals(currentUser.Id))
             {
                 throw new ArgumentException("Sem premissão.");
             }

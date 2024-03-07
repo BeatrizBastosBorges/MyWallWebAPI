@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MyWallWebAPI.Domain.Models;
-using MyWallWebAPI.Domain.Models.Services;
-using MyWallWebAPI.Infrastructure.Data.Repositories;
+using MyWallWebAPI.Domain.Models.Services.Implementations;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyWallWebAPI
+namespace MyWallWebAPI.Application.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
@@ -34,7 +31,7 @@ namespace MyWallWebAPI
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }          
+            }
         }
 
         [HttpGet("list-meus-posts")]
@@ -56,7 +53,7 @@ namespace MyWallWebAPI
         {
             try
             {
-               Post post = await _postService.GetPost(postId);
+                Post post = await _postService.GetPost(postId);
                 return Ok(post);
             }
             catch (Exception ex)
@@ -103,7 +100,7 @@ namespace MyWallWebAPI
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }          
+            }
         }
     }
 }

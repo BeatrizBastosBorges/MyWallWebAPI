@@ -8,12 +8,11 @@ using MyWallWebAPI.Infrastructure.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyWallWebAPI.Domain.Services
+namespace MyWallWebAPI.Domain.Services.Implementations
 {
     public class AuthService
     {
@@ -26,7 +25,7 @@ namespace MyWallWebAPI.Domain.Services
 
         public AuthService(UserRepository userRepository, IConfiguration configuration, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
-            this._userRepository = userRepository;
+            _userRepository = userRepository;
 
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
@@ -63,7 +62,7 @@ namespace MyWallWebAPI.Domain.Services
             return await _userRepository.UpdateUser(findUser);
         }
 
-        public async Task<Boolean> DeleteUser(string userId)
+        public async Task<bool> DeleteUser(string userId)
         {
             ApplicationUser findUser = await _userRepository.GetUser(userId);
             if (findUser == null)
@@ -86,7 +85,7 @@ namespace MyWallWebAPI.Domain.Services
                 throw new ArgumentException("Email already exists!");
 
             ApplicationUser user;
-            
+
             user = new ApplicationUser()
             {
                 Email = signUpDTO.Email,

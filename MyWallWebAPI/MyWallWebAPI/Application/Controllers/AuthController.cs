@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MyWallWebAPI.Domain;
+using MyWallWebAPI.Domain.Models;
 using MyWallWebAPI.Domain.Models.DTOs;
-using MyWallWebAPI.Domain.Models.Services;
-using MyWallWebAPI.Domain.Services;
-using MyWallWebAPI.Infrastructure.Data.Repositories;
+using MyWallWebAPI.Domain.Services.Implementations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyWallWebAPI
+namespace MyWallWebAPI.Application.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]

@@ -1,5 +1,4 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using System;
 using System.Text;
 
 namespace MyWallWebAPI.Infrastructure.Config.Identity

@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using MyWallWebAPI.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace MyWallWebAPI.Domain
+namespace MyWallWebAPI.Domain.Models
 {
     public class ApplicationUser : IdentityUser
     {
